@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tasks
+{% endblock %}
+
+{% block main %}
+<div>
+    <h2>Add a Task</h2><br>
+    <form action="/tasks" method="post">
+
+        <div class="form-group">
+            <select class="form-control" name="employee" required>
+            <option disabled selected value>Collaborator</option>
+
+                {% for row2 in rows2 %}
+                    <option value="{{ row2.employee }}">{{ row2.employee }}</option>
+                {% endfor %}
+            </select>
+
+
+
+            <input autocomplete="off" autofocus class="form-control" name="task_id" placeholder="Create task_id" type="text" maxlength="7" required/>
+            <input autocomplete="off" autofocus class="form-control" name="task" placeholder="Describe Task" type="text" size="70" required/>
+        </div><br>
+
+        <button class="btn btn-primary" type="submit">Add</button>
+
+    </form>
+    </div><br><br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Task ID</th>
+                <th>Owner</th>
+                <th>Task Description</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row["task_id"] }}</td>
+                    <td>{{ row["employee"] }}</td>
+                    <td>{{ row["task"] }}</td>
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+        </table><br>
+        <h4 align="left">Task ID Creation Guide</h4><br>
+        <div align="left">
+            Usage: "Department Function Key"_"Associated Task Number"<br></div>
+
+        <div align="left"><br>
+
+            <b>Keys</b><br>
+            Marketing = MKTG<br>
+            Information Technology = IT<br>
+            Sales = SL<br>
+            Operations =OPS<br><br>
+
+
+            <b>Task Numbers</b><br>
+            "X", where X is the selected number of parent task.<br>
+            "X.Y", where X is the selected number of parent task, and Y is the selected number of the sub-task under a parent task.<br>
+            <i>Add more "." if the task is a sub-tasks under another sub-task of a parent task (Eg. X.Y.Z).</i>
+
+
+
+
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Collaborators
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr>
+        <td style="width:50%;">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Collaborators</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rowsc %}
+                <tr>
+                    <td>{{ row["employee"] }}</td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table><br>
+        </td>
+
+    <td style="padding:100px;" align="left">
+    <h2> Add a Collaborator</h2>
+    Add a collaborator to be involved in the project<br><br>
+
+    <form action="/collab" method="post" >
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="employee" placeholder="Enter Employee Name" type="text" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    </td>
+    </tr>
+    </table>
+{% endblock %}
