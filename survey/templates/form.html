@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+        <h5 class="mb-3">Enter your Mobile Number</h5>
+        <input type = "text" autofocus name = "number" placeholder = "Mobile Number"><br><br>
+
+        <h5 class="mb-3">Choose a subscription type</h5>
+        <input type = "radio" name = "sub" value = "30 Days" required="required"> 30 Days for <b>QAR 15</b></input><br>
+        <input type = "radio" name = "sub" value = "1 Year" required="required"> 1 Year for <b>QAR 149</b></input><br><br>
+
+        <h5 class="mb-3">Choose your location</h5>
+        <select name = "location">
+            <option disabled selected value = "">Location</option>
+            <option value = "Qatar">Qatar</option>
+            <option value = "Oman">Oman</option>
+            <option value = "Kuwait">Kuwait</option>
+        </select><br><br>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit" value = "Subscribe">Subscribe</button>
+
+    </form>
+
+    <script>
+
+        document.querySelector('form').onsubmit = function() {
+            if (!document.querySelector('#number').value) {
+                alert('You must provide your phone number');
+                return false;
+            }
+            else if (!document.querySelector('select').value) {
+                alert('You must provide your location');
+                return false;
+            }
+            return true;
+        };
+
+    </script>
+
+{% endblock %}
