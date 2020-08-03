@@ -40,4 +40,4 @@ The course covers:
 6. Programming with Python
 7. Standard Query Language
 
-
+Certification: https://courses.edx.org/certificates/0d4fdd4581074368aa43eb29b23ef20e
